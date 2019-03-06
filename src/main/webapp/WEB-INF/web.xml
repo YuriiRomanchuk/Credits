@@ -7,12 +7,12 @@
     <display-name>Simple Servlet Application</display-name>
     <servlet>
         <servlet-name>servletPost</servlet-name>
-        <servlet-class>credits.servlet.StarterServlet</servlet-class>
+        <servlet-class>credits.servlet.StartServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>servletPost</servlet-name>
-        <url-pattern>/welcome</url-pattern>
+        <url-pattern>/main/*</url-pattern>
     </servlet-mapping>
 </web-app>
