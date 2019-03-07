@@ -8,20 +8,17 @@ import java.util.List;
 
 public class BankService {
 
-
     private List<Bank> banks = new ArrayList<>();
-
 
     public List<Bank> getBanks() {
         return banks;
     }
 
     public void addBank(Bank currentBank) throws ModelException {
-
         try {
             banks.add(currentBank);
         } catch (Exception e) {
-            throw new ModelException("Current bank did not save", e);
+            throw new ModelException("Current bank does not save", e);
         }
     }
 

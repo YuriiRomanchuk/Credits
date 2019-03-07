@@ -26,7 +26,6 @@ public class BankController {
 
     }
 
-
     public View showAddBankPage() {
         return new ViewModel("WEB-INF/jsp/add-bank.jsp");
     }

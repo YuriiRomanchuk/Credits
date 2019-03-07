@@ -1,9 +1,12 @@
 package credits.initializer;
 
 import credits.controller.BankController;
+import credits.controller.CreditLineController;
 import credits.controller.StartController;
 import credits.service.BankService;
+import credits.service.CreditLineService;
 import credits.transformer.BankTransformer;
+import credits.transformer.CreditLineTransformer;
 import credits.view.View;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,9 @@ public class PrimaryInitializer {
 
     private Map<String, Function<HttpServletRequest, View>> getControllers = new HashMap<>();
     private Map<String, Function<HttpServletRequest, View>> postControllers = new HashMap<>();
-    private BankController bankController = new BankController(new BankService());
+    private BankService bankService = new BankService();
+    private BankController bankController = new BankController(bankService);
+    private CreditLineController creditLineController = new CreditLineController(bankService, new CreditLineService());
 
 
     public PrimaryInitializer() {
@@ -32,16 +37,19 @@ public class PrimaryInitializer {
         getControllers.put("/", r -> startController.showIndexPage());
         getControllers.put("/add-bank", r -> bankController.showAddBankPage());
         getControllers.put("/bank-list", r -> bankController.showAllBanks());
+        getControllers.put("/add-credit-line", r -> creditLineController.showAddCreditLinePage());
+        getControllers.put("/credit-line-list", r -> creditLineController.showAllCreditLines());
 
     }
 
     private void initializePostControllers() {
 
         BankTransformer bankTransformer = new BankTransformer();
+        CreditLineTransformer creditLineTransformer = new CreditLineTransformer();
+
         postControllers.put("/add-bank", r -> bankController.addBank(bankTransformer.transformToObject(r)));
-
+        postControllers.put("/add-credit-line", r ->  creditLineController.addCreditLine(creditLineTransformer.transformToObject(r)));
     }
-
 
     public View getView() {
 
