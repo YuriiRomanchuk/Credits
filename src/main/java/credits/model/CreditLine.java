@@ -3,6 +3,8 @@ package credits.model;
 public class CreditLine {
 
     private Bank bank;
+    private int percent;
+    private int id;
 
     public void setBank(Bank bank) {
         this.bank = bank;
@@ -16,8 +18,6 @@ public class CreditLine {
         this.id = id;
     }
 
-    private int percent;
-    private int id;
 
     public CreditLine() {
     }

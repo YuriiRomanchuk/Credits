@@ -3,6 +3,8 @@ package credits.initializer;
 import credits.controller.BankController;
 import credits.controller.CreditLineController;
 import credits.controller.StartController;
+import credits.dao.DaoBank;
+import credits.dao.DataSource;
 import credits.service.BankService;
 import credits.service.CreditLineService;
 import credits.transformer.BankTransformer;
@@ -20,12 +22,19 @@ public class PrimaryInitializer {
 
     private Map<String, Function<HttpServletRequest, View>> getControllers = new HashMap<>();
     private Map<String, Function<HttpServletRequest, View>> postControllers = new HashMap<>();
-    private BankService bankService = new BankService();
-    private BankController bankController = new BankController(bankService);
+    private DataSource dataSource ;
+    private BankService bankService;
+    private BankController bankController;
+    private DaoBank daoBank;
     private CreditLineController creditLineController = new CreditLineController(bankService, new CreditLineService());
 
 
     public PrimaryInitializer() {
+        this.dataSource = new DataSource();
+        this.daoBank = new DaoBank(dataSource);
+        this.bankService = new BankService(daoBank);
+        this.bankController = new BankController(bankService);
+
         initializeGetControllers();
         initializePostControllers();
     }
