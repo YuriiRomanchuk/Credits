@@ -6,6 +6,7 @@ public class Bank {
     private int registrationNumber;
     private int id;
 
+
     public Bank() {
     }
 
@@ -28,5 +29,13 @@ public class Bank {
 
     public void setRegistrationNumber(int registrationNumber) {
         this.registrationNumber = registrationNumber;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

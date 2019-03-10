@@ -1,10 +1,13 @@
 package credits.dao;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import credits.reader.ResourceFileReader;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class DataSource {
 
@@ -29,24 +32,13 @@ public class DataSource {
 
     private void InitializeDataBase() {
 
-        StringBuilder stringBuilder = new StringBuilder();
+        ResourceFileReader resourceFileReader = new ResourceFileReader();
+        List<String> queries = resourceFileReader.parseFileStrings(resourceFileReader.receiveFileStrings("sql/initializeTable.sql"), ";");
 
-        try {
-            File file = new File("sql/initializeTable.sql");
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-
-            bufferedReader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (String query : queries) {
+            implementWrite(query, p -> {
+            });
         }
-
-
     }
 
     private void testConnection() {
@@ -57,7 +49,7 @@ public class DataSource {
         }
     }
 
-    public void implementWrite(String query, Consumer<PreparedStatement> parameters) {
+    public void implementWrite(String query, SqlConsumer<PreparedStatement> parameters) {
 
         try (
                 Connection connection = receiveConnection();
@@ -69,4 +61,56 @@ public class DataSource {
             throw new RuntimeException(e);
         }
     }
+
+    public <T> List<T> receiveRecords(String query, SqlFunction<T> converter, SqlConsumer<PreparedStatement> parameters) {
+
+        List<T> objects = new ArrayList<>();
+
+        try (
+                Connection connection = receiveConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            parameters.accept(preparedStatement);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    objects.add(converter.apply(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return objects;
+    }
+
+    public <T> Optional<T> receiveFirstRecord(String sql, SqlFunction<T> converter, SqlConsumer<PreparedStatement> parameters) {
+        return receiveRecords(sql, converter, parameters).stream().findFirst();
+    }
+
+    interface SqlFunction<T> extends Function<ResultSet, T> {
+        @Override
+        default T apply(ResultSet resultSet) {
+            try {
+                return safeApply(resultSet);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        T safeApply(ResultSet resultSet) throws SQLException;
+    }
+
+    interface SqlConsumer<T> extends Consumer<T> {
+        @Override
+        default void accept(T preparedStatement) {
+            try {
+                safeApply(preparedStatement);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        void safeApply(T preparedStatement) throws SQLException;
+    }
+
 }

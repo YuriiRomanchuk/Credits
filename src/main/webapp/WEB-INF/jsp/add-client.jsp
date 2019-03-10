@@ -1,30 +1,20 @@
-<!doctype html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: yromanchuk
+  Date: 3/10/19
+  Time: 3:28 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <meta charset="UTF-8"/>
-    <title>Credits</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <title>Title</title>
 </head>
 <body>
-<h3>Hello!</h3>
-<p>
-    <a href="add-bank">add bank</a>
-</p>
 
-<p>
-    <a href="bank-list">bank list</a>
-</p>
-
-<p>
-    <a href="add-credit-line">add credit line</a>
-</p>
-
-<p>
-    <a href="credit-line-list">credit line list</a>
-</p>
 </body>
 </html>

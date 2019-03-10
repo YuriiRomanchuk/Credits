@@ -3,16 +3,17 @@ package credits.dao;
 import credits.model.Bank;
 
 import java.sql.SQLException;
-import java.util.function.Consumer;
+import java.util.List;
 
 public class DaoBank {
 
     private DataSource dataSource;
-    private Consumer<Bank> bankConverter;
+    private DataSource.SqlFunction<Bank> bankConverter;
 
 
     public DaoBank(DataSource dataSource) {
         this.dataSource = dataSource;
+        receiveConverter();
     }
 
     public void saveBank(Bank bank) {
@@ -29,14 +30,29 @@ public class DaoBank {
         });
     }
 
+    public List<Bank> receiveAllBanks() {
+        return dataSource.receiveRecords("select name, registrationNumber, id from banks",
+                bankConverter,
+                preparedStatement -> {
+                });
+    }
 
- /*
-    private void initializeCreateBank() {
+    public Bank getBankById(int bank_id) {
+        return dataSource.receiveFirstRecord("select * from banks where id = ?",
+                bankConverter,
+                preparedStatement -> preparedStatement.setInt(1, bank_id)).orElse(null);
 
-        bankConverter = bc -> {
+    }
 
-        }
+    private void receiveConverter() {
+        bankConverter = rs -> {
+            Bank bank = new Bank();
+            bank.setName(rs.getString("name"));
+            bank.setRegistrationNumber(rs.getInt("registrationNumber"));
+            bank.setId(rs.getInt("id"));
+            return bank;
+        };
 
+    }
 
-    }*/
 }

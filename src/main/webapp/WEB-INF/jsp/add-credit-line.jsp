@@ -50,15 +50,21 @@
 
                         <% List<Bank> banks = (List<Bank>) request.getAttribute("listOfBank");
                             for (Bank bank : banks) { %>
-                        <option value="<%=  bank.getRegistrationNumber()%>"><%=bank.getName() %></option>
+                        <option value="<%=  bank.getId()%>"><%=bank.getName() %></option>
                         <%
                             }
                         %>
                     </select>
 
                     <div class="form-group">
-                        <label for="percent">Number:</label>
-                        <input type="percent" class="form-control" id="percent" name="percent" placeholder="Enter percent">
+                        <label for="percent">Percent:</label>
+                        <input type="number" class="form-control" id="percent" name="percent" placeholder="Enter percent">
+                        <label for="earlyRedemption">Early redemption:</label>
+                        <input type="checkbox" class="form-control" id="earlyRedemption" name="earlyRedemption">
+                        <label for="increaseCreditLine">Increase creditlLine:</label>
+                        <input type="checkbox" class="form-control" id="increaseCreditLine" name="increaseCreditLine">
+                        <label for="maxSum">Max sum:</label>
+                        <input type="number" class="form-control" id="maxSum" name="maxSum" placeholder="Enter max sum">
                     </div>
 
                 </div>

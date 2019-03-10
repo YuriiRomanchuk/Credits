@@ -20,7 +20,7 @@ public class StartServlet extends HttpServlet {
     private PrimaryInitializer primaryInitializer;
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init() throws ServletException {
         primaryInitializer = new PrimaryInitializer();
     }
 

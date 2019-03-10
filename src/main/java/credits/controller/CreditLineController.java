@@ -38,7 +38,6 @@ public class CreditLineController {
     public View addCreditLine(CreditLine creditLine) {
 
         View view;
-
         try {
             creditLineService.addCreditLine(creditLine);
             view = new ViewModel("credit-line-list");

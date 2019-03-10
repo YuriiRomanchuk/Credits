@@ -4,6 +4,9 @@ public class CreditLine {
 
     private Bank bank;
     private int percent;
+    private boolean earlyRedemption;
+    private boolean increaseCreditLine;
+    private int maxSum;
     private int id;
 
     public void setBank(Bank bank) {
@@ -38,5 +41,29 @@ public class CreditLine {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isEarlyRedemption() {
+        return earlyRedemption;
+    }
+
+    public boolean isIncreaseCreditLine() {
+        return increaseCreditLine;
+    }
+
+    public int getMaxSum() {
+        return maxSum;
+    }
+
+    public void setEarlyRedemption(boolean earlyRedemption) {
+        this.earlyRedemption = earlyRedemption;
+    }
+
+    public void setIncreaseCreditLine(boolean increaseCreditLine) {
+        this.increaseCreditLine = increaseCreditLine;
+    }
+
+    public void setMaxSum(int maxSum) {
+        this.maxSum = maxSum;
     }
 }

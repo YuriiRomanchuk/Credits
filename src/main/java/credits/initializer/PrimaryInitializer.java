@@ -4,6 +4,7 @@ import credits.controller.BankController;
 import credits.controller.CreditLineController;
 import credits.controller.StartController;
 import credits.dao.DaoBank;
+import credits.dao.DaoCreditLine;
 import credits.dao.DataSource;
 import credits.service.BankService;
 import credits.service.CreditLineService;
@@ -26,7 +27,9 @@ public class PrimaryInitializer {
     private BankService bankService;
     private BankController bankController;
     private DaoBank daoBank;
-    private CreditLineController creditLineController = new CreditLineController(bankService, new CreditLineService());
+    private DaoCreditLine daoCreditLine;
+    private CreditLineController creditLineController;
+    private CreditLineService creditLineService;
 
 
     public PrimaryInitializer() {
@@ -34,6 +37,9 @@ public class PrimaryInitializer {
         this.daoBank = new DaoBank(dataSource);
         this.bankService = new BankService(daoBank);
         this.bankController = new BankController(bankService);
+        this.daoCreditLine = new DaoCreditLine(dataSource, daoBank);
+        this.creditLineService = new CreditLineService(daoCreditLine);
+        this.creditLineController = new CreditLineController(bankService, creditLineService);
 
         initializeGetControllers();
         initializePostControllers();
