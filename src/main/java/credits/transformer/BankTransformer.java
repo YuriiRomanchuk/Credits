@@ -3,6 +3,7 @@ package credits.transformer;
 import credits.model.Bank;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 public class BankTransformer implements Transformer {
 
@@ -11,7 +12,11 @@ public class BankTransformer implements Transformer {
 
         Bank bank = new Bank();
         bank.setRegistrationNumber(Integer.parseInt(request.getParameter("registrationNumber")));
-        bank.setName(request.getParameter("name"));
+        try {
+            bank.setName(new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         return bank;
     }
