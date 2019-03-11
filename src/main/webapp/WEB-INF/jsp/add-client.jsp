@@ -33,7 +33,7 @@
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Apply</button>
             </form>
         </div>
     </div>
