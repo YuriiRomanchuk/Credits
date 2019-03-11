@@ -19,23 +19,10 @@
 <%
     String error = (String) request.getAttribute("Error");
     if (error != null) {
-%> <h1><%=error%></h1> <%
+%> <h1><%=error%>
+</h1> <%
     }
 %>
-
-<%--<h1>Add credit line</h1>
-<form method="post" action="add-credit-line">
-    <p><strong>Bank</strong>
-    <select bankName="bank">
-        <% List<Bank> banks = (List<Bank>) request.getAttribute("listOfBank");
-        for (Bank bank : banks) { %>
-        <option value="<%=  bank.getRegistrationNumber()%>"><%=bank.getName() %></option>
-        <%} %>
-    </select></p>
-
-    Percent: <input name="percent" type="text"/> </br>
-    <button type="submit" >Save</button>
-</form>--%>
 
 <div class="container">
     <div class="row">
@@ -50,7 +37,8 @@
 
                         <% List<Bank> banks = (List<Bank>) request.getAttribute("listOfBank");
                             for (Bank bank : banks) { %>
-                        <option value="<%=  bank.getId()%>"><%=bank.getName() %></option>
+                        <option value="<%=  bank.getId()%>"><%=bank.getName() %>
+                        </option>
                         <%
                             }
                         %>
@@ -58,7 +46,8 @@
 
                     <div class="form-group">
                         <label for="percent">Percent:</label>
-                        <input type="number" class="form-control" id="percent" name="percent" placeholder="Enter percent">
+                        <input type="number" class="form-control" id="percent" name="percent"
+                               placeholder="Enter percent">
                         <label for="earlyRedemption">Early redemption:</label>
                         <input type="checkbox" class="form-control" id="earlyRedemption" name="earlyRedemption">
                         <label for="increaseCreditLine">Increase creditlLine:</label>

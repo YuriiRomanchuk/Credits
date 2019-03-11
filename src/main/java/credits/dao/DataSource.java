@@ -37,6 +37,7 @@ public class DataSource {
 
         for (String query : queries) {
             implementWrite(query, p -> {
+            }, r -> {
             });
         }
     }
@@ -49,7 +50,7 @@ public class DataSource {
         }
     }
 
-    public void implementWrite(String query, SqlConsumer<PreparedStatement> parameters) {
+    public void implementWrite(String query, SqlConsumer<PreparedStatement> parameters, SqlConsumer<ResultSet> resultProcessor) {
 
         try (
                 Connection connection = receiveConnection();
@@ -57,6 +58,11 @@ public class DataSource {
         ) {
             parameters.accept(preparedStatement);
             preparedStatement.executeUpdate();
+            try (ResultSet rs = preparedStatement.getGeneratedKeys();) {
+                while (rs.next()) {
+                    resultProcessor.accept(rs);
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class BankController {
 
-    BankService bankService;
+    private BankService bankService;
 
     public BankController(BankService bankService) {
         this.bankService = bankService;

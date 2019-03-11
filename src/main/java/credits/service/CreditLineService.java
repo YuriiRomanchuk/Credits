@@ -5,6 +5,7 @@ import credits.exception.ModelException;
 import credits.model.CreditLine;
 
 import java.util.List;
+import java.util.Map;
 
 public class CreditLineService {
 
@@ -16,6 +17,10 @@ public class CreditLineService {
 
     public List<CreditLine> getCreditLines() {
         return daoCreditLine.receiveAllCreditLines();
+    }
+
+    public List<CreditLine> getCreditLines(Map<String, String> selections) {
+        return daoCreditLine.receiveSelectionsCreditLines(selections);
     }
 
     public void addCreditLine(CreditLine creditLine) throws ModelException {

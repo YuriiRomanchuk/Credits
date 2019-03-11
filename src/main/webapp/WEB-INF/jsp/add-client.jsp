@@ -16,5 +16,27 @@
 </head>
 <body>
 
+<%
+    String error = (String) request.getAttribute("Error");
+    if (error != null) {
+%> <h1><%=error%>
+</h1> <%
+    }
+%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h1>Authorization</h1>
+            <form method="post" action="add-client" class="form" role="form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

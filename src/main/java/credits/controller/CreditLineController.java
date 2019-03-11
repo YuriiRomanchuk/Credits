@@ -9,11 +9,12 @@ import credits.view.View;
 import credits.view.ViewModel;
 
 import java.util.Date;
+import java.util.Map;
 
 public class CreditLineController {
 
-    BankService bankService;
-    CreditLineService creditLineService;
+    private BankService bankService;
+    private CreditLineService creditLineService;
 
     public CreditLineController(BankService bankService, CreditLineService creditLineService) {
         this.bankService = bankService;
@@ -34,6 +35,26 @@ public class CreditLineController {
         return view;
 
     }
+
+
+    public View chooseAllCreditLines() {
+
+        ViewModel view = new ViewModel("WEB-INF/jsp/choose-credit-line.jsp");
+      /*  view.addParameter("currentDateFromBackend", new Date());
+        view.addParameter("listOfCreditLines", creditLineService.getCreditLines());*/
+        return view;
+
+    }
+
+    public View chooseSelectionCreditLines(Map<String, String> selections) {
+
+        ViewModel view = new ViewModel("choose-credit-line");
+        view.addParameter("currentDateFromBackend", new Date());
+        view.addParameter("listOfCreditLines", creditLineService.getCreditLines(selections));
+        view.addParameter("client_id", selections.get("client_id"));
+        return new RedirectViewModel(view);
+    }
+
 
     public View addCreditLine(CreditLine creditLine) {
 

@@ -6,7 +6,6 @@ public class Bank {
     private int registrationNumber;
     private int id;
 
-
     public Bank() {
     }
 

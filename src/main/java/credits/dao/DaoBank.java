@@ -10,7 +10,6 @@ public class DaoBank {
     private DataSource dataSource;
     private DataSource.SqlFunction<Bank> bankConverter;
 
-
     public DaoBank(DataSource dataSource) {
         this.dataSource = dataSource;
         receiveConverter();
@@ -27,6 +26,7 @@ public class DaoBank {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }, r -> {
         });
     }
 
