@@ -1,6 +1,6 @@
-package credits.dao;
+package credits.data.dao;
 
-import credits.model.ClientCredit;
+import credits.data.model.ClientCredit;
 
 import java.util.List;
 import java.util.Map;

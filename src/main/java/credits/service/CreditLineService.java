@@ -1,8 +1,8 @@
 package credits.service;
 
-import credits.dao.DaoCreditLine;
+import credits.data.dao.DaoCreditLine;
 import credits.exception.ModelException;
-import credits.model.CreditLine;
+import credits.data.model.CreditLine;
 
 import java.util.List;
 import java.util.Map;

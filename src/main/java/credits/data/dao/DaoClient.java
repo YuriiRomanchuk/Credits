@@ -1,6 +1,6 @@
-package credits.dao;
+package credits.data.dao;
 
-import credits.model.Client;
+import credits.data.model.Client;
 
 public class DaoClient {
 
@@ -16,7 +16,7 @@ public class DaoClient {
 
         if (oldClient == null) {
 
-            String query = "insert into clients (name) values(?)";
+           final String query = "insert into clients (name) values(?)";
 
             dataSource.implementWrite(query, ps -> {
                 ps.setString(1, client.getName());

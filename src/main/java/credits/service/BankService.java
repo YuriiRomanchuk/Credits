@@ -1,8 +1,8 @@
 package credits.service;
 
-import credits.dao.DaoBank;
+import credits.data.dao.DaoBank;
 import credits.exception.ModelException;
-import credits.model.Bank;
+import credits.data.model.Bank;
 
 import java.util.List;
 

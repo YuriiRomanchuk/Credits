@@ -1,7 +1,7 @@
 package credits.initializer;
 
 import credits.controller.*;
-import credits.dao.*;
+import credits.data.dao.*;
 import credits.service.BankService;
 import credits.service.ClientCreditService;
 import credits.service.ClientService;

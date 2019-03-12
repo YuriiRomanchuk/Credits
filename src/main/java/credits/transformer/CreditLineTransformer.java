@@ -1,7 +1,7 @@
 package credits.transformer;
 
-import credits.model.Bank;
-import credits.model.CreditLine;
+import credits.data.model.Bank;
+import credits.data.model.CreditLine;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

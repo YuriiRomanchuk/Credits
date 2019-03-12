@@ -1,4 +1,4 @@
-<%@ page import="credits.model.Bank" %>
+<%@ page import="credits.data.model.Bank" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: yromanchuk

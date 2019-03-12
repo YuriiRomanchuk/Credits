@@ -1,4 +1,4 @@
-package credits.dao;
+package credits.data.dao;
 
 import credits.reader.ResourceFileReader;
 

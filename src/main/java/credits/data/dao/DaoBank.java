@@ -1,6 +1,6 @@
-package credits.dao;
+package credits.data.dao;
 
-import credits.model.Bank;
+import credits.data.model.Bank;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,7 +17,7 @@ public class DaoBank {
 
     public void saveBank(Bank bank) {
 
-        String query = "insert into banks (name, registrationNumber) values(?, ?)";
+       final String query = "insert into banks (name, registrationNumber) values(?, ?)";
 
         dataSource.implementWrite(query, ps -> {
             try {

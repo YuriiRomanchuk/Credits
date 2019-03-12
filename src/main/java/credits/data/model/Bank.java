@@ -1,4 +1,4 @@
-package credits.model;
+package credits.data.model;
 
 public class Bank {
 

@@ -1,6 +1,6 @@
 package credits.transformer;
 
-import credits.model.Bank;
+import credits.data.model.Bank;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;

@@ -1,6 +1,6 @@
-package credits.dao;
+package credits.data.dao;
 
-import credits.model.CreditLine;
+import credits.data.model.CreditLine;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

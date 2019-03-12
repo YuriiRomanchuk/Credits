@@ -1,7 +1,7 @@
 package credits.controller;
 
 import credits.exception.ModelException;
-import credits.model.CreditLine;
+import credits.data.model.CreditLine;
 import credits.service.BankService;
 import credits.service.CreditLineService;
 import credits.view.RedirectViewModel;

@@ -1,8 +1,8 @@
 package credits.service;
 
-import credits.dao.DaoClient;
+import credits.data.dao.DaoClient;
 import credits.exception.ModelException;
-import credits.model.Client;
+import credits.data.model.Client;
 
 public class ClientService {
 

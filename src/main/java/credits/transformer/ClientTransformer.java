@@ -1,6 +1,6 @@
 package credits.transformer;
 
-import credits.model.Client;
+import credits.data.model.Client;
 
 import javax.servlet.http.HttpServletRequest;
 

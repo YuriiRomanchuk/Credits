@@ -1,7 +1,6 @@
-<%@ page import="credits.model.Bank" %>
+<%@ page import="credits.data.model.Bank" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="credits.model.Bank" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
